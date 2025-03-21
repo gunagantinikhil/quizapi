@@ -3,10 +3,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-// Middleware
 app.use(bodyParser.json());
 
-// Sample quiz questions
 const questions = [
     {
         id: 1,
@@ -28,13 +26,13 @@ const questions = [
     }
 ];
 
-// GET endpoint for a random question
+
 app.get('/api/question', (req, res) => {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     res.json(randomQuestion);
 });
 
-// POST endpoint to submit an answer and check if it's correct
+
 app.post('/api/submit', (req, res) => {
     const { questionId, answer } = req.body;
 
@@ -55,7 +53,7 @@ app.post('/api/submit', (req, res) => {
     }
 });
 
-// Start the server
+
 app.listen(port, () => {
     console.log(`Quiz API is running on http://localhost:${port}`);
 });
